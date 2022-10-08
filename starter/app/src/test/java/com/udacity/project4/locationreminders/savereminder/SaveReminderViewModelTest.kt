@@ -78,7 +78,7 @@ class SaveReminderViewModelTest {
     }
 
     @Test
-    fun validateEnteredData_TitleEmpty_ReturnFalse(){
+    fun validateEnteredData_TitleEmpty_ReturnFalse() {
         val reminderData = SomeReminderData.reminderDataItem.copy()
         reminderData.title = ""
 
@@ -92,21 +92,7 @@ class SaveReminderViewModelTest {
     }
 
     @Test
-    fun validateEnteredData_TitleNull_ReturnFalse(){
-        val reminderData = SomeReminderData.reminderDataItem.copy()
-        reminderData.title = null
-
-        val res = viewModel.validateEnteredData(reminderData)
-
-        MatcherAssert.assertThat(
-            viewModel.showSnackBarInt.getOrAwaitValue(),
-            `is`(R.string.err_enter_title)
-        )
-        MatcherAssert.assertThat(res, CoreMatchers.`is`(false))
-    }
-
-    @Test
-    fun validateEnteredData_LocationNull_ReturnFalse(){
+    fun validateEnteredData_LocationNull_ReturnFalse() {
         val reminderData = SomeReminderData.reminderDataItem.copy()
         reminderData.location = null
 
@@ -120,7 +106,29 @@ class SaveReminderViewModelTest {
     }
 
     @Test
-    fun validateEnteredData_LocationEmpty_ReturnFalse(){
+    fun validateEnteredData_TitleNull_ReturnFalse() {
+        val reminderData = SomeReminderData.reminderDataItem.copy()
+        reminderData.title = null
+
+        val res = viewModel.validateEnteredData(reminderData)
+
+        MatcherAssert.assertThat(
+            viewModel.showSnackBarInt.getOrAwaitValue(),
+            `is`(R.string.err_enter_title)
+        )
+        MatcherAssert.assertThat(res, CoreMatchers.`is`(false))
+    }
+
+
+    @Test
+    fun validateEnteredData_ReturnTrue() {
+        val res = viewModel.validateEnteredData(SomeReminderData.reminderDataItem)
+
+        MatcherAssert.assertThat(res, CoreMatchers.`is`(true))
+    }
+
+    @Test
+    fun validateEnteredData_LocationEmpty_ReturnFalse() {
         val reminderData = SomeReminderData.reminderDataItem.copy()
         reminderData.location = ""
 
@@ -131,12 +139,5 @@ class SaveReminderViewModelTest {
             Matchers.`is`(R.string.err_select_location)
         )
         MatcherAssert.assertThat(res, CoreMatchers.`is`(false))
-    }
-
-    @Test
-    fun validateEnteredData_ReturnTrue() {
-        val res = viewModel.validateEnteredData(SomeReminderData.reminderDataItem)
-
-        MatcherAssert.assertThat(res, CoreMatchers.`is`(true))
     }
 }

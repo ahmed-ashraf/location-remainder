@@ -42,9 +42,18 @@ Explain what each test does and why
 
 ```
 1.androidTest
-        //TODO: Students explain their testing here.
+        Testing RemindersDao in RemindersDaoTest using `Room.inMemoryDatabaseBuilder` to create a Room DB instance.
+        Testing RemindersLocalRepository in RemindersLocalRepositoryTest using `Room.inMemoryDatabaseBuilder` to create a Room DB instance.
+        Testing RemindersLocalRepository in RemindersLocalRepositoryTest
+            - Testing navigation when clicking add button
+            - Testing when showing list of remainders
+            - Testing when showing no remainders
+        Testing RemindersActivity in RemindersActivityTest
+            - Testing when adding new item to the list and showing it in list
+        Using Espresso and Mockito to test the app UI and Fragments Navigation
 2. test
-        //TODO: Students explain their testing here.
+        - FakeDataSource to replace the Data Layer as test double
+        - Using RemindersListViewModelTest and SaveReminderViewModelTest to test functions inside the viewmodel
 ```
 
 ## Project Instructions
